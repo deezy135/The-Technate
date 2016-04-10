@@ -27,9 +27,10 @@ void Game::run() {
 		State::StateEvent se = state->update();
 		switch (se) {
 		case State::StateEvent::Quit: running = false; break;
+		case State::StateEvent::Render: eng->updateGraphics(); break;
 		case State::StateEvent::Menu: break;
 		}
-		eng->updateGraphics();
+		//eng->updateGraphics();
 	}
 }
 

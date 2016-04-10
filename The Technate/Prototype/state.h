@@ -6,6 +6,7 @@ public:
 	enum StateEvent {
 		Quit,
 		Run,
+		Render,
 		Menu,
 		Play,
 	};

@@ -26,6 +26,14 @@ void Label::setPosition(int x, int y) {
 
 void Label::setText(const char * text) {
 	this->text = text;
+	create();
+}
+
+void Label::append(const char * text) {
+	std::string s = this->text;
+	this->text.append(text);
+	create();
+	this->text = s;
 }
 
 void Label::render() {
@@ -39,6 +47,9 @@ void Label::render(int x, int y) {
 
 void Label::create() {
 	SDL_Surface *srf = TTF_RenderText_Solid(font, text.c_str(), color);
+	if (tex != NULL) {
+		SDL_DestroyTexture(tex);
+	}
 	tex = SDL_CreateTextureFromSurface(rnd, srf);
 	rect.w = srf->w;
 	rect.h = srf->h;

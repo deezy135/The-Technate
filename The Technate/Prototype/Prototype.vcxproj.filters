@@ -84,6 +84,9 @@
     <ClCompile Include="state.cpp">
       <Filter>Файлы исходного кода\Game</Filter>
     </ClCompile>
+    <ClCompile Include="timer.cpp">
+      <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="constants.hpp">
@@ -145,6 +148,9 @@
     </ClInclude>
     <ClInclude Include="buildingmanager.h">
       <Filter>Заголовочные файлы\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="timer.h">
+      <Filter>Заголовочные файлы\Engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

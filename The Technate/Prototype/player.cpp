@@ -12,7 +12,7 @@ bool Player::init(Engine *engine, BuildingManager *bm, Map *map) {
 	SDL_Color color = { 82, 193, 76, 255 };
 	money.init(engine->getGraphics()->getRenderer(),
 		engine->getGraphics()->getFontManager()->getFont(FontID::Roboto),
-		color, 100, 10, "Money: $1000");
+		color, 500, 10, "Money: $1000");
 	money.create();
 	return true;
 }

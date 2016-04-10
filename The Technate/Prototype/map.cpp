@@ -43,7 +43,11 @@ bool Map::init(TextureManager * tm) {
 }
 
 void Map::update() {
-	if (rand() % 10 == 0) {
+	static int ii = 0;
+	SDL_Rect rect = { ii%cols*tileW, ii/cols*tileH, tileW, tileH };
+	ii++;
+	tex.blit(&water, &rect);
+	/*if (rand() % 10 == 0) {
 		int i = rand() % rows, j = rand() % cols;
 		SDL_Rect rect = { j*tileW, i*tileH, tileW, tileH };
 		field[i][j] = Tile(rand() % Tile::Total);
@@ -52,7 +56,7 @@ void Map::update() {
 		case Tile::Water: tex.blit(&water, &rect); break;
 		case Tile::Hill: tex.blit(&hill, &rect); break;
 		}
-	}
+	}*/
 }
 
 void Map::placeBuilding(Texture * buildingTex, int tx, int ty) {

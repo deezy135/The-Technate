@@ -12,6 +12,7 @@ public:
 	void setColor(SDL_Color color);
 	void setPosition(int x, int y);
 	void setText(const char *text);
+	void append(const char *text);
 	void render();
 	void render(int x, int y);
 	void create();

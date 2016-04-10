@@ -10,7 +10,7 @@ Graphics::Graphics(){
 	wndW = 640, wndH = 480;
 	wndFlags = SDL_WINDOW_SHOWN | SDL_WINDOW_RESIZABLE;
 
-	rndFlags = SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC;
+	rndFlags = SDL_RENDERER_ACCELERATED/* | SDL_RENDERER_PRESENTVSYNC*/;
 }
 
 bool Graphics::init() {
