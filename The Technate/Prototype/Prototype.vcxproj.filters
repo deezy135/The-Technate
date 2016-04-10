@@ -85,7 +85,7 @@
       <Filter>Файлы исходного кода\Game</Filter>
     </ClCompile>
     <ClCompile Include="timer.cpp">
-      <Filter>Файлы исходного кода</Filter>
+      <Filter>Файлы исходного кода\Game</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
