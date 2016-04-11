@@ -78,5 +78,5 @@ void Player::render() {
 		bm->render(selType, &camera, input->getMX(), input->getMY());
 	}
 	money.render(300, 10);
-	moneyLabel.render(370, 10);
+	moneyLabel.render(350, 10);
 }
