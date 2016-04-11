@@ -37,8 +37,8 @@ bool PlayState::init(Engine * engine) {
 	graphicsTimer.update();
 
 	fps.init(engine->getGraphics()->getRenderer(),
-		engine->getGraphics()->getFontManager()->getFont(FontID::SansSerif),
-		color, 10, 10, "FPS: ");
+		engine->getGraphics()->getFontManager()->getFont(FontID::Roboto),
+		color, 10, 10, "fps: ");
 
 	return true;
 }
@@ -63,7 +63,7 @@ State::StateEvent PlayState::update() {
 		if (logicPerSecond < 5) {
 			logicPerSecond = 5;
 		}
-		std::cout << "LPS: " << logicPerSecond << std::endl;
+		std::cout << "lps: " << logicPerSecond << std::endl;
 		logicTimer.setPerSecond(logicPerSecond);
 	}
 	if (input->getKey0()) {
@@ -71,7 +71,7 @@ State::StateEvent PlayState::update() {
 		if (logicPerSecond > 80) {
 			logicPerSecond = 80;
 		}
-		std::cout << "LPS: " << logicPerSecond << std::endl;
+		std::cout << "lps: " << logicPerSecond << std::endl;
 		logicTimer.setPerSecond(logicPerSecond);
 	}
 	if (logicTimer.isTimeTo(currentTicks)) {

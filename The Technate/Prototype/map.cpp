@@ -30,7 +30,8 @@ bool Map::init(TextureManager * tm) {
 	rect.w = tileW, rect.h = tileH;
 	for (int i = 0; i < rows; i++) {
 		for (int j = 0; j < cols; j++) {
-			field[i][j] = Tile(rand() % Tile::Total);
+			//field[i][j] = Tile(rand() % Tile::Total);
+			field[i][j] = Tile::Land;
 			rect.x = j*tileW, rect.y = i*tileH;
 			switch (field[i][j]) {
 			case Tile::Land: tex.blit(&land, &rect); break;
@@ -44,19 +45,21 @@ bool Map::init(TextureManager * tm) {
 
 void Map::update() {
 	static int ii = 0;
+	static int type = Tile::Water;
 	SDL_Rect rect = { ii%cols*tileW, ii/cols*tileH, tileW, tileH };
-	ii++;
-	tex.blit(&water, &rect);
+	//tex.blit(&water, &rect);
 	/*if (rand() % 10 == 0) {
 		int i = rand() % rows, j = rand() % cols;
 		SDL_Rect rect = { j*tileW, i*tileH, tileW, tileH };
 		field[i][j] = Tile(rand() % Tile::Total);
-		switch (field[i][j]) {
-		case Tile::Land: tex.blit(&land, &rect); break;
-		case Tile::Water: tex.blit(&water, &rect); break;
-		case Tile::Hill: tex.blit(&hill, &rect); break;
-		}
-	}*/
+		*/
+	switch (type) {
+	case Tile::Land: tex.blit(&land, &rect); break;
+	case Tile::Water: tex.blit(&water, &rect); break;
+	case Tile::Hill: tex.blit(&hill, &rect); break;
+	}
+	ii++;
+	if (ii >= cols*rows) ii = 0, type = Tile((type + 1) % Tile::Total);
 }
 
 void Map::placeBuilding(Texture * buildingTex, int tx, int ty) {

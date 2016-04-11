@@ -8,6 +8,7 @@
 #include "map.h"
 #include "label.h"
 #include "engine.h"
+#include "resource.h"
 
 class Player {
 public:
@@ -25,5 +26,7 @@ private:
 	std::vector<Building> buildings;
 	Building::Type selType;
 	bool selPlace;
-	Label money;
+	Resource money;
+	Label moneyLabel;
+	Texture moneyTex;
 };

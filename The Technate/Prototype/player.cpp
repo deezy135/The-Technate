@@ -10,15 +10,29 @@ bool Player::init(Engine *engine, BuildingManager *bm, Map *map) {
 	camera.moveTo(100, 100);
 	selPlace = false;
 	SDL_Color color = { 82, 193, 76, 255 };
-	money.init(engine->getGraphics()->getRenderer(),
+	moneyLabel.init(engine->getGraphics()->getRenderer(),
 		engine->getGraphics()->getFontManager()->getFont(FontID::Roboto),
-		color, 500, 10, "Money: $1000");
-	money.create();
+		color, 500, 10, " ");
+	moneyTex.setRenderer(engine->getGraphics()->getRenderer());
+	moneyTex.setTexture(engine->getGraphics()->getTextureManager()->getTexture(TexID::MoneyR));
+	SDL_Rect rect = { 0, 0, 32, 32 };
+	moneyTex.setRect(&rect);
+	money.setName("Money ");
+	money.setQuantity(1000);
+	money.setTexture(&moneyTex);
+	moneyLabel.setText(money.getName());
 	return true;
 }
 
 void Player::update() {
-
+	if (input->getArrowUp()) {
+		money.addQuantity(5);
+		moneyLabel.append(std::to_string(money.getQuantity()).c_str());
+	}
+	else if (input->getArrowDown()) {
+		money.addQuantity(-5);
+		moneyLabel.append(std::to_string(money.getQuantity()).c_str());
+	}
 	if (input->getKey1()) {
 		selPlace = true;
 		selType = Building::Type::Admin;
@@ -52,7 +66,7 @@ void Player::update() {
 void Player::close() {
 	input = NULL;
 	name.clear();
-	money.destroy();
+	moneyLabel.destroy();
 }
 
 Camera * Player::getCamera() {
@@ -63,5 +77,6 @@ void Player::render() {
 	if (selPlace) {
 		bm->render(selType, &camera, input->getMX(), input->getMY());
 	}
-	money.render();
+	money.render(300, 10);
+	moneyLabel.render(370, 10);
 }

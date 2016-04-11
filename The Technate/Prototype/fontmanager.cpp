@@ -8,6 +8,7 @@ void FontManager::setRenderer(SDL_Renderer * rnd) {
 }
 
 bool FontManager::loadFonts() {
+	fonts = 0;
 	std::ifstream fin;
 	fin.open(FontsInfoFile);
 	if (!fin.is_open()) {

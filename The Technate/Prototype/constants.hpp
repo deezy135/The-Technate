@@ -1,6 +1,6 @@
 #pragma once
 
-const int MaxTextures = 10;
+const int MaxTextures = 20;
 const int MaxMapWidth = 50;
 const int MaxMapHeight = 50;
 
@@ -15,6 +15,7 @@ enum TexID {
 	ProcessB,
 	AirportB,
 	SeaportB,
+	MoneyR,
 };
 
 enum FontID {
