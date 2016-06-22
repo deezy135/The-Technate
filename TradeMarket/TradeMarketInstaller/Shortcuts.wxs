@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Fragment>
+		<!-- TODO: Put your code here. -->
+    <DirectoryRef Id="ApplicationProgramsFolder">
+      <Component Id="ApplicationShortcuts" Guid="{F91D966E-AFD5-4DCB-B9E0-300430E647DF}">
+        <Shortcut Id="StartShortcut"
+                  Name="Trade Market"
+                  Description="Запустить торговую площадку"
+                  Target="[INSTALLFOLDER]tm1.exe"
+                  WorkingDirectory="INSTALLFOLDER"/>
+        <Shortcut Id="UninstallTradeMarket"
+                  Name="Удалить торговую площадку"
+                  Target="[System64Folder]msiexec.exe"
+                  Arguments="/x [ProductCode]"/>
+        <RemoveFolder Id="ApplicationProgramsFolder" On="uninstall"/>
+        <RegistryValue Root="HKCU"
+                       Key="Software\deezy\TradeMarket"
+                       Name="installed"
+                       Type="integer"
+                       Value="1"
+                       KeyPath="yes"/>
+      </Component>
+    </DirectoryRef>
+	</Fragment>
+</Wix>

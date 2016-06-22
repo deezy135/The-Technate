@@ -149,12 +149,18 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="adminbuilding.cpp" />
     <ClCompile Include="building.cpp" />
     <ClCompile Include="buildingmanager.cpp" />
+    <ClCompile Include="button.cpp" />
     <ClCompile Include="camera.cpp" />
+    <ClCompile Include="colormanager.cpp" />
+    <ClCompile Include="component.cpp" />
     <ClCompile Include="engine.cpp" />
+    <ClCompile Include="extractbuilding.cpp" />
     <ClCompile Include="fontmanager.cpp" />
     <ClCompile Include="game.cpp" />
+    <ClCompile Include="globalobject.cpp" />
     <ClCompile Include="graphics.cpp" />
     <ClCompile Include="input.cpp" />
     <ClCompile Include="label.cpp" />
@@ -164,8 +170,11 @@
     <ClCompile Include="menustate.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="playstate.cpp" />
+    <ClCompile Include="processbuilding.cpp" />
     <ClCompile Include="resource.cpp" />
+    <ClCompile Include="resourcemanager.cpp" />
     <ClCompile Include="state.cpp" />
+    <ClCompile Include="textbox.cpp" />
     <ClCompile Include="texture.cpp" />
     <ClCompile Include="texturemanager.cpp" />
     <ClCompile Include="timer.cpp" />
@@ -175,11 +184,16 @@
     <ClInclude Include="adminbuilding.h" />
     <ClInclude Include="building.h" />
     <ClInclude Include="buildingmanager.h" />
+    <ClInclude Include="button.h" />
     <ClInclude Include="camera.h" />
+    <ClInclude Include="colormanager.h" />
+    <ClInclude Include="component.h" />
     <ClInclude Include="constants.hpp" />
     <ClInclude Include="engine.h" />
+    <ClInclude Include="extractbuilding.h" />
     <ClInclude Include="fontmanager.h" />
     <ClInclude Include="game.h" />
+    <ClInclude Include="globalobject.h" />
     <ClInclude Include="graphics.h" />
     <ClInclude Include="input.h" />
     <ClInclude Include="label.h" />
@@ -188,8 +202,11 @@
     <ClInclude Include="menustate.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="playstate.h" />
+    <ClInclude Include="processbuilding.h" />
     <ClInclude Include="resource.h" />
+    <ClInclude Include="resourcemanager.h" />
     <ClInclude Include="state.h" />
+    <ClInclude Include="textbox.h" />
     <ClInclude Include="texture.h" />
     <ClInclude Include="texturemanager.h" />
     <ClInclude Include="timer.h" />

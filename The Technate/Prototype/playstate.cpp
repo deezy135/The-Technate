@@ -1,13 +1,15 @@
 #include "playstate.h"
+#include "globalobject.h"
 #include <iostream>
 #include <algorithm>
+#include "colormanager.h"
 
 bool PlayState::init(Engine * engine) {
-	this->input = engine->getInput();
+	input = Go::getInput();
 	logicPerSecond = 20;
 	physicsPerSecond = 60;
 	graphicsPerSecond = 60;
-	if (!player.init(engine, &bm, &map)) {
+	if (!player.init(engine, &bm, &rm, &map)) {
 		return false;
 	}
 	if (!map.init(engine->getGraphics()->getTextureManager())) {
@@ -19,7 +21,7 @@ bool PlayState::init(Engine * engine) {
 		map.close();
 		return false;
 	}
-	SDL_Color color = { 0, 0, 0, 255 };
+	SDL_Color color = { 13, 13, 13, 255 };
 	logicTimer.init();
 	physicsTimer.init();
 	graphicsTimer.init();
@@ -36,9 +38,10 @@ bool PlayState::init(Engine * engine) {
 	physicsTimer.update();
 	graphicsTimer.update();
 
-	fps.init(engine->getGraphics()->getRenderer(),
-		engine->getGraphics()->getFontManager()->getFont(FontID::Roboto),
-		color, 10, 10, "fps: ");
+	rm.init(Go::getTextureManager());
+	fps.init(FontID::Roboto, ColorManager::ColorID::Black, 10, 10, "fps: ");
+
+	player.setMoney(2000);
 
 	return true;
 }
@@ -76,6 +79,7 @@ State::StateEvent PlayState::update() {
 	}
 	if (logicTimer.isTimeTo(currentTicks)) {
 		map.update();
+		player.updateLogics();
 		logicTimer.update();
 	}
 	if (physicsTimer.isTimeTo(currentTicks)) {
@@ -100,5 +104,6 @@ State::StateEvent PlayState::update() {
 }
 
 void PlayState::close() {
+	rm.close();
 	player.close();
 }

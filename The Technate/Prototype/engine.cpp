@@ -1,6 +1,7 @@
 #include "engine.h"
 #include "log.h"
 #include <SDL_image.h>
+#include "globalobject.h"
 
 Engine::Engine() {
 
@@ -35,6 +36,11 @@ bool Engine::init() {
 		SDL_Quit();
 		return false;
 	}
+	Go::setInput(&input);
+	Go::setGraphics(&graphics);
+	Go::setFontManager(graphics.getFontManager());
+	Go::setTextureManager(graphics.getTextureManager());
+	Go::setColorManager(graphics.getColorManager());
 	return true;
 }
 

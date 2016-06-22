@@ -1,5 +1,4 @@
 images\1\
-warfstache.png
 land.png
 water.png
 hill.png
@@ -9,4 +8,6 @@ extract.png
 process.png
 airport.png
 seaport.png
-money.png
+wood.png
+iron.png
+steel.png

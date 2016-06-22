@@ -1,29 +1,33 @@
 #include "resource.h"
 
-void Resource::setTexture(Texture * texture) {
-	tex = texture;
+void Resource::setType(Type type) {
+	this->type = type;
 }
 
-void Resource::setName(char * name) {
-	this->name = name;
+void Resource::setMax(float max) {
+	this->max = max;
 }
 
-void Resource::setQuantity(int quantity) {
+void Resource::setSpeed(float speed) {
+	this->speed = speed;
+}
+
+void Resource::setQuantity(float quantity) {
 	this->quantity = quantity;
 }
 
-void Resource::render(int x, int y) {
-	tex->render(x, y);
+void Resource::addQuantity(float quantity) {
+	this->quantity += quantity;
 }
 
-const char * Resource::getName() {
-	return name.c_str();
+Resource::Type Resource::getType() {
+	return type;
 }
 
-int Resource::getQuantity() {
+float Resource::getMax() {
+	return max;
+}
+
+float Resource::getQuantity() {
 	return quantity;
-}
-
-void Resource::addQuantity(int add) {
-	quantity += add;
 }

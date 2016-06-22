@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+  <Product Id="*" Name="installer1" Language="1033" Version="1.0.0.0" Manufacturer="deezy135" UpgradeCode="77e388ae-161f-412d-9c55-e3dc06e6839a">
+    <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+    <CustomAction Id="DIRCA_TARGETDIR" Property="TARGETDIR" Value="[LocalAppDataFolder][Manufacturer]\[ProductName] " Execute="firstSequence" />
+    <MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+    <MediaTemplate />
+    <Feature Id="ProductFeature" Title="installer1" Level="1">
+      <ComponentRef Id="comp_136C543F_9190_4217_B18F_5B1689D6F2F9" />
+      <ComponentRef Id="comp_24586BAA_6DFD_4861_9F60_897E842E0F49" />
+    </Feature>
+    <InstallExecuteSequence>
+      <Custom Action="DIRCA_TARGETDIR" Before="CostInitialize"><![CDATA[TARGETDIR=""]]></Custom>
+    </InstallExecuteSequence>
+    <InstallUISequence>
+      <Custom Action="DIRCA_TARGETDIR" Before="CostInitialize"><![CDATA[TARGETDIR=""]]></Custom>
+    </InstallUISequence>
+    <AdminUISequence>
+      <Custom Action="DIRCA_TARGETDIR" Before="CostInitialize"><![CDATA[TARGETDIR=""]]></Custom>
+    </AdminUISequence>
+  </Product>
+  <Fragment>
+    <Directory Id="TARGETDIR" Name="SourceDir">
+      <Directory Id="dir_E562E3E1_41EA_4C73_A879_EDDFA2F92571" Name="images">
+        <Directory Id="dir_331B1939_1F2A_44C2_A64B_D537E2A59DFA" Name="1">
+          <Component Id="comp_136C543F_9190_4217_B18F_5B1689D6F2F9" Guid="4BCE81A0-7AB2-4ABF-BA5E-671B9E98FF18" Permanent="no" SharedDllRefCount="no" Transitive="no">
+            <File Id="_8813686D_B2DC_4D39_9981_0CF2CFACB111" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="admin.png" Source="..\..\The Technate\Prototype\images\1\admin.png" KeyPath="yes" />
+          </Component>
+        </Directory>
+      </Directory>
+      <Directory Id="dir_91B431DF_7168_4C6F_B3B0_617B5AC5D258" Name="fonts">
+        <Component Id="comp_24586BAA_6DFD_4861_9F60_897E842E0F49" Guid="3E80508F-E9BA-4191-BFBD-B8F48157D042" Permanent="no" SharedDllRefCount="no" Transitive="no">
+          <File Id="_EF012366_FFD4_45B9_8C7B_D33C2669AEB2" DiskId="1" Hidden="no" ReadOnly="no" TrueType="no" System="no" Vital="yes" Name="font.ttf" Source="..\..\The Technate\Prototype\fonts\font.ttf" KeyPath="yes" />
+        </Component>
+      </Directory>
+    </Directory>
+  </Fragment>
+  <Fragment>
+  </Fragment>
+</Wix>

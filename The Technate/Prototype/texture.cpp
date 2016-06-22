@@ -1,22 +1,19 @@
 #include "texture.h"
+#include "texturemanager.h"
 
-void Texture::setRect(SDL_Rect * rect) {
-	this->rect.x = rect->x;
-	this->rect.y = rect->y;
-	this->rect.w = rect->w;
-	this->rect.h = rect->h;
+void Texture::setImage(TextureManager * tm, TexID imgID) {
+	tex = tm->getTexture(imgID);
+	rnd = tm->getRenderer();
 }
 
-void Texture::setRenderer(SDL_Renderer * renderer) {
-	rnd = renderer;
+void Texture::setSize(int width, int height) {
+	rect.w = width;
+	rect.h = height;
 }
 
-void Texture::setTexture(SDL_Texture * texture) {
-	tex = texture;
-}
-
-SDL_Rect * Texture::getRect() {
-	return &rect;
+void Texture::setLocation(int x, int y) {
+	rect.x = x;
+	rect.y = y;
 }
 
 SDL_Renderer * Texture::getRenderer() {
@@ -33,16 +30,8 @@ void Texture::blit(Texture * texture, SDL_Rect * rect) {
 	SDL_SetRenderTarget(rnd, NULL);
 }
 
-void Texture::resetRect() {
-	rect.x = rect.y = rect.w = rect.h = 0;
-}
-
-void Texture::resetRenderer() {
-	rnd = NULL;
-}
-
-void Texture::resetTexture() {
-	tex = NULL;
+void Texture::render() {
+	SDL_RenderCopy(rnd, tex, NULL, &rect);
 }
 
 void Texture::render(int x, int y) {

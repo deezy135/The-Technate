@@ -3,6 +3,7 @@
 #include <string>
 #include "texturemanager.h"
 #include "fontmanager.h"
+#include "colormanager.h"
 
 class Graphics {
 public:
@@ -13,6 +14,7 @@ public:
 	void close();
 	TextureManager * getTextureManager();
 	FontManager * getFontManager();
+	ColorManager * getColorManager();
 	SDL_Renderer *getRenderer();
 private:
 	SDL_Window *wnd;
@@ -20,6 +22,7 @@ private:
 
 	TextureManager tm;
 	FontManager fm;
+	ColorManager cm;
 	
 	std::string wndTitle;
 	int wndX, wndY;

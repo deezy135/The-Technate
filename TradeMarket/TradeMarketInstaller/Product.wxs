@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="TradeMarketInstaller" Language="1049" Version="1.0.0.0" Manufacturer="deezy" UpgradeCode="bc9d9ab4-df13-4bd9-bd20-45a7ccfe3860">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate />
+
+	  <Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="TradeMarket" />
+			</Directory>
+      <Directory Id="ProgramMenuFolder">
+        <Directory Id="ApplicationProgramsFolder" Name="TradeMarket" />
+      </Directory>
+		</Directory>
+
+		<Feature Id="ProductFeature" Title="TradeMarketInstaller" Level="1">
+			<ComponentRef Id="ProductComponents" />
+      <ComponentRef Id="ApplicationShortcuts"/>
+		</Feature>
+
+    <Property Id="WIXUI_INSTALLDIR" Value="INSTALLFOLDER"></Property>
+    <UIRef Id="WixUI_InstallDir"/>
+    
+	</Product>
+</Wix>

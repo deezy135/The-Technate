@@ -4,15 +4,18 @@
 
 class Resource {
 public:
-	void setTexture(Texture* texture);
-	void setName(char *name);
-	void setQuantity(int quantity);
-	void render(int x, int y);
-	const char* getName();
-	int getQuantity();
-	void addQuantity(int add);
+	enum Type { Wood, Iron, Steel, Total };
+	void setType(Type type);
+	void setMax(float max);
+	void setSpeed(float speed);
+	void setQuantity(float quantity);
+	void addQuantity(float quantity);
+	Type getType();
+	float getMax();
+	float getQuantity();
 private:
-	Texture *tex;
-	std::string name;
-	int quantity;
+	Type type;
+	float max;
+	float speed;
+	float quantity;
 };

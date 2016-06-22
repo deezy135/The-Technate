@@ -1,23 +1,22 @@
 #pragma once
 #include <SDL.h>
 #include "camera.h"
+#include "constants.hpp"
+
+class TextureManager;
 
 class Texture {
 public:
-	void setRect(SDL_Rect * rect);
-	void setRenderer(SDL_Renderer * renderer);
-	void setTexture(SDL_Texture * texture);
-
-	SDL_Rect * getRect();
+	void setImage(TextureManager * tm, TexID imgID);
+	void setSize(int width, int height);
+	void setLocation(int x, int y);
+	
 	SDL_Renderer * getRenderer();
 	SDL_Texture * getTexture();
 
 	void blit(Texture * texture, SDL_Rect * rect);
 
-	void resetRect();
-	void resetRenderer();
-	void resetTexture();
-
+	void render();
 	void render(int x, int y);
 	void render(Camera* camera);
 

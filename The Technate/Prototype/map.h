@@ -16,11 +16,9 @@ public:
 	void close();
 private:
 	Tile field[MaxMapHeight][MaxMapWidth];
+	Texture tile[Tile::Total];
 	Texture tex;
-	Texture bg;
-	Texture land;
-	Texture water;
-	Texture hill;
+	
 	int tileW, tileH;
 	int rows, cols;
 };

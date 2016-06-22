@@ -1,62 +1,51 @@
 #include "buildingmanager.h"
+#include "player.h"
 
 bool BuildingManager::init(TextureManager * tm) {
-	adminTex.setRenderer(tm->getRenderer());
-	warehouseTex.setRenderer(tm->getRenderer());
-	extractTex.setRenderer(tm->getRenderer());
-	processTex.setRenderer(tm->getRenderer());
-	airportTex.setRenderer(tm->getRenderer());
-	seaportTex.setRenderer(tm->getRenderer());
-
-	adminTex.setTexture(tm->getTexture(TexID::AdminB));
-	warehouseTex.setTexture(tm->getTexture(TexID::WarehouseB));
-	extractTex.setTexture(tm->getTexture(TexID::ExtractB));
-	processTex.setTexture(tm->getTexture(TexID::ProcessB));
-	airportTex.setTexture(tm->getTexture(TexID::AirportB));
-	seaportTex.setTexture(tm->getTexture(TexID::SeaportB));
-
-	SDL_Rect rect = { 0, 0, 64, 64 };
-	adminTex.setRect(&rect);
-	warehouseTex.setRect(&rect);
-	extractTex.setRect(&rect);
-	processTex.setRect(&rect);
-	airportTex.setRect(&rect);
-	seaportTex.setRect(&rect);
+	for (int i = 0; i < Building::Type::Total; i++) {
+		tex[i].setImage(tm, TexID(TexID::AdminB + i));
+		tex[i].setSize(64, 64);
+	}
 	return true;
 }
 
-Building BuildingManager::create(Building::Type type) {
+Building* BuildingManager::create(Player *player, Building::Type type, int x, int y) {
+	Building *building = NULL;
 	switch (type) {
-	case Building::Type::Admin:
-		return Adminbuilding();
-	/*case Building::Type::Warehouse:
-		return Warehousebuilding();
-	case Building::Type::Extract:
-		return Extractbuilding();
-	case Building::Type::Process:
-		return Processbuilding();
-	case Building::Type::Airport:
-		return Airportbuilding();
-	case Building::Type::Seaport:
-		return Seaportbuilding();*/
+	case Building::Admin:
+	{
+		building = new AdminBuilding();
+		building->setPlayer(player);
+		building->setPosition(x, y);
+		building->setType(type);
 	}
-	return Building();
+	break;
+	case Building::Process:
+	{
+		building = new ProcessBuilding();
+		building->setPlayer(player);
+		building->setPosition(x, y);
+		building->setType(type);
+	}
+	break;
+	case Building::Extract:
+	{
+		building = new ExtractBuilding();
+		building->setPlayer(player);
+		building->setPosition(x, y);
+		building->setType(type);
+		((ExtractBuilding*)building)->setOutput(0, Resource::Type::Wood, 2.f / 20.f, 10.f);
+	}
+	break;
+	}
+	return building;
 }
 
 void BuildingManager::render(Building::Type type, int x, int y) {
-	switch (type) {
-	case Building::Type::Admin:
-		adminTex.render(x, y);
-		break;
-	/*case Building::Type::Warehouse:
-	case Building::Type::Extract:
-	case Building::Type::Process:
-	case Building::Type::Airport:
-	case Building::Type::Seaport:*/
-	}
+	tex[type].render(x, y);
 }
 
-void BuildingManager::render(Building::Type type, Camera * cam, int mx, int my) {
+void BuildingManager::render(Building::Type type, Camera *cam, int mx, int my) {
 	int x, y, w, h;
 	int cx = cam->getRect()->x, cy = cam->getRect()->y;
 	int cw = cam->getRect()->w, ch = cam->getRect()->h;
@@ -64,34 +53,18 @@ void BuildingManager::render(Building::Type type, Camera * cam, int mx, int my) 
 	h = 64 * 480 / ch;
 	x = ((cx + mx*cw / 640) / 64 * 64 - cx) * 640 / cw;
 	y = ((cy + my*ch / 480) / 64 * 64 - cy) * 480 / ch;
-	SDL_Rect r = { x, y, w, h };
-	switch (type) {
-	case Building::Type::Admin:
-		adminTex.setRect(&r);
-		adminTex.render(x, y);
-		break;
-		/*case Building::Type::Warehouse:
-		case Building::Type::Extract:
-		case Building::Type::Process:
-		case Building::Type::Airport:
-		case Building::Type::Seaport:*/
-	}
+	
+	tex[type].setSize(w, h);
+	tex[type].setLocation(x, y);
+	tex[type].render();
 }
 
 Texture * BuildingManager::getTexture(Building::Type type) {
-	switch (type) {
-	case Building::Type::Admin:
-		return &adminTex;
-		case Building::Type::Warehouse:
-		return &warehouseTex;
-		case Building::Type::Extract:
-		return &extractTex;
-		case Building::Type::Process:
-		return &processTex;
-		case Building::Type::Airport:
-		return &airportTex;
-		case Building::Type::Seaport:
-		return &seaportTex;
+	return &tex[type];
+}
+
+void BuildingManager::close() {
+	for (int i = 0; i < Building::Type::Total; i++) {
+		tex[i].destroy();
 	}
-	return NULL;
 }

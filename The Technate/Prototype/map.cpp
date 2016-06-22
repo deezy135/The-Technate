@@ -5,39 +5,21 @@ bool Map::init(TextureManager * tm) {
 	tileW = tileH = 64;
 	rows = 25, cols = 25;
 
-	tex.setRenderer(tm->getRenderer());
+	tex.setImage(tm, TexID::Land);
 	tex.create(tileW*cols, tileH*rows);
-	bg.setTexture(tm->getTexture(TexID::MapBG));
-	land.setTexture(tm->getTexture(TexID::Land));
-	water.setTexture(tm->getTexture(TexID::Water));
-	hill.setTexture(tm->getTexture(TexID::Hill));
-
-	bg.setRenderer(tm->getRenderer());
-	land.setRenderer(tm->getRenderer());
-	water.setRenderer(tm->getRenderer());
-	hill.setRenderer(tm->getRenderer());
-
 	
-	SDL_Rect rect = { 0, 0, 400, 400 };
-	bg.setRect(&rect);
+	for (int i = 0; i < Tile::Total; i++) {
+		tile[i].setImage(tm, TexID(TexID::Land + i));
+		tile[i].setSize(tileW, tileH);
+	}
 
-	tex.blit(&bg, &rect);
-	rect = { 0, 0, tileW, tileH };
-	land.setRect(&rect);
-	water.setRect(&rect);
-	hill.setRect(&rect);
-
-	rect.w = tileW, rect.h = tileH;
+	SDL_Rect rect = { 0, 0, tileW, tileH };
 	for (int i = 0; i < rows; i++) {
 		for (int j = 0; j < cols; j++) {
 			//field[i][j] = Tile(rand() % Tile::Total);
 			field[i][j] = Tile::Land;
 			rect.x = j*tileW, rect.y = i*tileH;
-			switch (field[i][j]) {
-			case Tile::Land: tex.blit(&land, &rect); break;
-			case Tile::Water: tex.blit(&water, &rect); break;
-			case Tile::Hill: tex.blit(&hill, &rect); break;
-			}
+			tex.blit(&tile[field[i][j]], &rect);
 		}
 	}
 	return true;
@@ -53,11 +35,7 @@ void Map::update() {
 		SDL_Rect rect = { j*tileW, i*tileH, tileW, tileH };
 		field[i][j] = Tile(rand() % Tile::Total);
 		*/
-	switch (type) {
-	case Tile::Land: tex.blit(&land, &rect); break;
-	case Tile::Water: tex.blit(&water, &rect); break;
-	case Tile::Hill: tex.blit(&hill, &rect); break;
-	}
+	tex.blit(&tile[type], &rect);
 	ii++;
 	if (ii >= cols*rows) ii = 0, type = Tile((type + 1) % Tile::Total);
 }

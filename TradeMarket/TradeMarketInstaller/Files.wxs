@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Fragment>
+		<!-- TODO: Put your code here. -->
+    <DirectoryRef Id="INSTALLFOLDER"
+                  FileSource="C:\Users\deezy\Source\Repos\The-Technate\TradeMarket\tm1\bin\Debug\">
+      <Component Id="ProductComponents"
+                 DiskId="1"
+                 Guid="{42E1188C-2045-404D-A644-67D599CB4834}">
+        <File Id="MySql.Data.dll" Name="MySql.Data.dll"/>
+        <File Id="tm1.exe" Name="tm1.exe"/>
+        <File Id="tm1.exe.config" Name="tm1.exe.config"/>
+        
+      </Component>
+    </DirectoryRef>
+    
+	</Fragment>
+</Wix>

@@ -1,27 +1,30 @@
 #pragma once
+#include "component.h"
 #include <SDL_ttf.h>
-#include <SDL.h>
 #include <string>
+#include "colormanager.h"
 
-class Label {
+enum FontID;
+
+class Label: public Component {
 public:
-	void init(SDL_Renderer *rnd, TTF_Font *font,
-		SDL_Color color, int x, int y, const char *text);
-	void setRenderer(SDL_Renderer *rnd);
-	void setFont(TTF_Font *font);
-	void setColor(SDL_Color color);
-	void setPosition(int x, int y);
-	void setText(const char *text);
-	void append(const char *text);
-	void render();
-	void render(int x, int y);
-	void create();
+	void init(std::string text);
+	void init(FontID fontID, ColorManager::ColorID colorID, int x, int y, std::string text);
+	void setFont(FontID fontID);
+	void setColor(ColorManager::ColorID colorID);
+	void setText(std::string text);
+	void append(std::string text);
 	void destroy();
+
+	virtual void handleInput();
+	virtual void render();
+	virtual void render(int x, int y);
+	virtual void update();
 private:
-	SDL_Rect rect;
 	SDL_Color color;
 	TTF_Font *font;
 	SDL_Renderer *rnd;
 	SDL_Texture *tex;
-	std::string text;
+	std::string txt;
+	bool hasChanged;
 };

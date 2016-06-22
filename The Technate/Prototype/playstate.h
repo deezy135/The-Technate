@@ -4,6 +4,7 @@
 #include "map.h"
 #include "timer.h"
 #include "label.h"
+#include "resourcemanager.h"
 
 class PlayState : public State {
 public:
@@ -20,6 +21,7 @@ private:
 	Player player;
 	Map map;
 	BuildingManager bm;
+	ResourceManager rm;
 	Input * input;
 	Label fps;
 };

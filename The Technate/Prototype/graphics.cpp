@@ -41,7 +41,7 @@ bool Graphics::init() {
 		SDL_DestroyWindow(wnd);
 		return false;
 	}
-
+	cm.init();
 	return true;
 }
 
@@ -62,6 +62,10 @@ TextureManager * Graphics::getTextureManager() {
 
 FontManager * Graphics::getFontManager() {
 	return &fm;
+}
+
+ColorManager * Graphics::getColorManager() {
+	return &cm;
 }
 
 SDL_Renderer * Graphics::getRenderer() {

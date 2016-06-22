@@ -1,21 +1,22 @@
 #pragma once
+//#include "player.h"
+#include "camera.h"
 #include "building.h"
 #include "adminbuilding.h"
+#include "extractbuilding.h"
+#include "processbuilding.h"
 #include "texturemanager.h"
-#include "camera.h"
+
+class Player;
 
 class BuildingManager {
 public:
 	bool init(TextureManager * tm);
-	Building create(Building::Type type);
+	Building* create(Player *player, Building::Type type, int x, int y);
 	void render(Building::Type type, int x, int y);
 	void render(Building::Type type, Camera *cam, int mx, int my);
 	Texture *getTexture(Building::Type type);
+	void close();
 private:
-	Texture adminTex;
-	Texture warehouseTex;
-	Texture extractTex;
-	Texture processTex;
-	Texture airportTex;
-	Texture seaportTex;
+	Texture tex[Building::Type::Total];
 };

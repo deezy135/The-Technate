@@ -1,6 +1,8 @@
 #pragma once
 #include <SDL.h>
 
+// Создать очередь событий с внешних устройств
+
 class Input {
 public:
 	Input();

@@ -87,8 +87,35 @@
     <ClCompile Include="timer.cpp">
       <Filter>Файлы исходного кода\Game</Filter>
     </ClCompile>
+    <ClCompile Include="extractbuilding.cpp">
+      <Filter>Файлы исходного кода\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="resourcemanager.cpp">
+      <Filter>Файлы исходного кода\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="adminbuilding.cpp">
+      <Filter>Файлы исходного кода\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="processbuilding.cpp">
+      <Filter>Файлы исходного кода\Game</Filter>
+    </ClCompile>
     <ClCompile Include="resource.cpp">
+      <Filter>Файлы исходного кода\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="globalobject.cpp">
       <Filter>Файлы исходного кода</Filter>
+    </ClCompile>
+    <ClCompile Include="component.cpp">
+      <Filter>Файлы исходного кода\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="colormanager.cpp">
+      <Filter>Файлы исходного кода\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="button.cpp">
+      <Filter>Файлы исходного кода\Engine</Filter>
+    </ClCompile>
+    <ClCompile Include="textbox.cpp">
+      <Filter>Файлы исходного кода\Engine</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -157,6 +184,30 @@
     </ClInclude>
     <ClInclude Include="resource.h">
       <Filter>Заголовочные файлы\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="resourcemanager.h">
+      <Filter>Заголовочные файлы\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="extractbuilding.h">
+      <Filter>Заголовочные файлы\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="processbuilding.h">
+      <Filter>Заголовочные файлы\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="component.h">
+      <Filter>Заголовочные файлы\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="globalobject.h">
+      <Filter>Заголовочные файлы</Filter>
+    </ClInclude>
+    <ClInclude Include="colormanager.h">
+      <Filter>Заголовочные файлы\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="button.h">
+      <Filter>Заголовочные файлы\Engine</Filter>
+    </ClInclude>
+    <ClInclude Include="textbox.h">
+      <Filter>Заголовочные файлы\Engine</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

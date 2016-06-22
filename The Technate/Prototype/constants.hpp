@@ -5,7 +5,6 @@ const int MaxMapWidth = 50;
 const int MaxMapHeight = 50;
 
 enum TexID {
-	MapBG,
 	Land,
 	Water,
 	Hill,
@@ -15,7 +14,9 @@ enum TexID {
 	ProcessB,
 	AirportB,
 	SeaportB,
-	MoneyR,
+	ResWood,
+	ResIron,
+	ResSteel,
 };
 
 enum FontID {
